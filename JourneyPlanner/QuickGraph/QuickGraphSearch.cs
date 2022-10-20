@@ -10,17 +10,15 @@ public static class QuickGraphSearch
         Network network)
     {
         var graph = QuickGraphMapping.BuildGraph(network);
-        var startVertices = startStations.Select(QuickGraphMapping.BuildVertex).ToList();
-        var destinationVertices = destinationStations.Select(QuickGraphMapping.BuildVertex).ToList();
-        RemoveTransferConnections(graph, startVertices, destinationVertices);
-        var shortestPaths = SearchAllShortestPaths(graph, startVertices, destinationVertices);
+        RemoveTransferConnections(graph, startStations, destinationStations);
+        var shortestPaths = SearchAllShortestPaths(graph, startStations, destinationStations);
         return shortestPaths.Select(QuickGraphMapping.BuildRoute);
     }
 
     private static void RemoveTransferConnections(
-        IMutableEdgeListGraph<string, QuickGraphEdge> graph,
-        IEnumerable<string> startVertices,
-        IEnumerable<string> destinationVertices)
+        IMutableEdgeListGraph<Station, QuickGraphEdge> graph,
+        IEnumerable<Station> startVertices,
+        IEnumerable<Station> destinationVertices)
     {
         foreach (var startVertex in startVertices)
         {
@@ -34,11 +32,11 @@ public static class QuickGraphSearch
     }
 
     private static IEnumerable<IEnumerable<QuickGraphEdge>> SearchAllShortestPaths(
-        IVertexAndEdgeListGraph<string, QuickGraphEdge> graph,
-        IReadOnlyList<string> startVertices,
-        IReadOnlyList<string> destinationVertices)
+        IVertexAndEdgeListGraph<Station, QuickGraphEdge> graph,
+        IReadOnlyList<Station> startVertices,
+        IReadOnlyList<Station> destinationVertices)
     {
-        var graphAlgorithm = new FloydWarshallAllShortestPathAlgorithm<string, QuickGraphEdge>(graph, e => e.Cost);
+        var graphAlgorithm = new FloydWarshallAllShortestPathAlgorithm<Station, QuickGraphEdge>(graph, e => e.Cost);
         graphAlgorithm.Compute();
 
         foreach (var startVertex in startVertices)
