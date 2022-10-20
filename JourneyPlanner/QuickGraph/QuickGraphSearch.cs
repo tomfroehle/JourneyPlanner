@@ -40,6 +40,7 @@ public static class QuickGraphSearch
     {
         var graphAlgorithm = new FloydWarshallAllShortestPathAlgorithm<string, QuickGraphEdge>(graph, e => e.Cost);
         graphAlgorithm.Compute();
+
         foreach (var startVertex in startVertices)
         {
             foreach (var destinationVertex in destinationVertices)
