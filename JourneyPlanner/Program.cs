@@ -7,6 +7,11 @@ internal class Program
     public static void Main(string[] args)
     {
         var journeys = JourneySearcher.FindShortestJourneys(args[0], args[1]);
+        Print(journeys);
+    }
+
+    private static void Print(IEnumerable<Journey> journeys)
+    {
         foreach (var journey in journeys)
         {
             Print(journey);
@@ -15,7 +20,8 @@ internal class Program
 
     private static void Print(Journey journey)
     {
-        Console.WriteLine($"{string.Join(',', journey.Edges.Select(PrintEdge))}, {journey.Duration}");
+        var edges = string.Join(',', journey.Edges.Select(PrintEdge));
+        Console.WriteLine($"{edges}, {journey.Duration}");
 
         static string PrintEdge(Edge edge)
         {
