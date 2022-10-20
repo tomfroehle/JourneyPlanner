@@ -1,0 +1,94 @@
+﻿[
+  {
+    "Connections": [
+      {
+        "Source": {
+          "Name": "Jungfernsteig",
+          "Line": "U2"
+        },
+        "Destination": {
+          "Name": "Hauptbahnhof",
+          "Line": "U2"
+        },
+        "Duration": 2
+      }
+    ],
+    "Duration": 2
+  },
+  {
+    "Connections": [
+      {
+        "Source": {
+          "Name": "Jungfernsteig",
+          "Line": "U1 Nord"
+        },
+        "Destination": {
+          "Name": "Stephansplatz",
+          "Line": "U1 Nord"
+        },
+        "Duration": 2
+      },
+      {
+        "Source": {
+          "Name": "Stephansplatz",
+          "Line": "U1 Nord"
+        },
+        "Destination": {
+          "Name": "Hauptbahnhof",
+          "Line": "U1 Nord"
+        },
+        "Duration": 3
+      }
+    ],
+    "Duration": 5
+  },
+  {
+    "Connections": [
+      {
+        "Source": {
+          "Name": "Jungfernsteig",
+          "Line": "U3"
+        },
+        "Destination": {
+          "Name": "Hauptstraße",
+          "Line": "U3"
+        },
+        "Duration": 2
+      },
+      {
+        "Source": {
+          "Name": "Hauptstraße",
+          "Line": "U3"
+        },
+        "Destination": {
+          "Name": "Stephansplatz",
+          "Line": "U3"
+        },
+        "Duration": 2
+      },
+      {
+        "Source": {
+          "Name": "Stephansplatz",
+          "Line": "U3"
+        },
+        "Destination": {
+          "Name": "Stephansplatz",
+          "Line": "U1 Nord"
+        },
+        "Duration": 0
+      },
+      {
+        "Source": {
+          "Name": "Stephansplatz",
+          "Line": "U1 Nord"
+        },
+        "Destination": {
+          "Name": "Hauptbahnhof",
+          "Line": "U1 Nord"
+        },
+        "Duration": 3
+      }
+    ],
+    "Duration": 7
+  }
+]

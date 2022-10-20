@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32901.215
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JourneyPlanner", "JourneyPlanner\JourneyPlanner.csproj", "{360137D3-A657-44A7-B289-157177F5CDA3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JourneyPlanner.Tests", "JourneyPlanner.Tests\JourneyPlanner.Tests.csproj", "{CE0285A0-C4CE-4897-92F8-27F0CF46ED84}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{360137D3-A657-44A7-B289-157177F5CDA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{360137D3-A657-44A7-B289-157177F5CDA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{360137D3-A657-44A7-B289-157177F5CDA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{360137D3-A657-44A7-B289-157177F5CDA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE0285A0-C4CE-4897-92F8-27F0CF46ED84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE0285A0-C4CE-4897-92F8-27F0CF46ED84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE0285A0-C4CE-4897-92F8-27F0CF46ED84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE0285A0-C4CE-4897-92F8-27F0CF46ED84}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2A585497-34D3-41A8-BDFD-81DA0676680E}
+	EndGlobalSection
+EndGlobal
