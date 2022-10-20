@@ -6,9 +6,7 @@ internal class Program
 {
     public static void Main(string[] args)
     {
-        var start = "Jungfernsteig";
-        var destination = "Hauptbahnhof";
-        var journeys = JourneySearcher.FindShortestJourneys(start, destination);
+        var journeys = JourneySearcher.FindShortestJourneys(args[0], args[1]);
         foreach (var journey in journeys)
         {
             Print(journey);

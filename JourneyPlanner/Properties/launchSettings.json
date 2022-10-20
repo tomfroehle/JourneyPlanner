@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "JourneyPlanner": {
+      "commandName": "Project",
+      "commandLineArgs": "Jungfernsteig Hauptbahnhof"
+    }
+  }
+}
