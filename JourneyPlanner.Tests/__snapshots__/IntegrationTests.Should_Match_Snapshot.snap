@@ -1,6 +1,6 @@
 ﻿[
   {
-    "Connections": [
+    "Edges": [
       {
         "Source": {
           "Name": "Jungfernsteig",
@@ -16,7 +16,7 @@
     "Duration": 2
   },
   {
-    "Connections": [
+    "Edges": [
       {
         "Source": {
           "Name": "Jungfernsteig",
@@ -43,7 +43,7 @@
     "Duration": 5
   },
   {
-    "Connections": [
+    "Edges": [
       {
         "Source": {
           "Name": "Jungfernsteig",

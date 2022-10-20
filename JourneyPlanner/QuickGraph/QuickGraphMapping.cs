@@ -5,28 +5,29 @@ namespace JourneyPlanner.QuickGraph;
 
 public static class QuickGraphMapping
 {
-    public static AdjacencyGraph<Station, QuickGraphEdge> BuildGraph(Network network)
+    public static AdjacencyGraph<Station, QuickGraphEdge> Map(Network network)
     {
         var graph = new AdjacencyGraph<Station, QuickGraphEdge>();
-        var edges = network.Connections.Select(BuildEdge);
+        var edges = network.Edges.Select(Map);
         graph.AddVertexRange(network.Stations);
         graph.AddEdgeRange(edges);
         return graph;
     }
 
-    public static Journey BuildRoute(IEnumerable<QuickGraphEdge> path)
+    public static Journey Map(IEnumerable<QuickGraphEdge> path)
     {
-        var edges = path.ToList();
-        return new Journey(edges.Select(BuildConnection).ToArray(), edges.Sum(e => e.Cost));
+        var edges = path.Select(Map).ToArray();
+        var duration = edges.Sum(e => e.Duration);
+        return new Journey(edges, duration);
     }
 
-    private static Connection BuildConnection(QuickGraphEdge quickGraphEdge)
+    private static Edge Map(QuickGraphEdge quickGraphEdge)
     {
-        return new Connection(quickGraphEdge.Source, quickGraphEdge.Target, quickGraphEdge.Cost);
+        return new Edge(quickGraphEdge.Source, quickGraphEdge.Target, quickGraphEdge.Cost);
     }
 
-    private static QuickGraphEdge BuildEdge(Connection connection)
+    private static QuickGraphEdge Map(Edge edge)
     {
-        return new QuickGraphEdge(connection.Source, connection.Destination, connection.Duration);
+        return new QuickGraphEdge(edge.Source, edge.Destination, edge.Duration);
     }
 }

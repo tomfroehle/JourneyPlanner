@@ -1,3 +1,3 @@
 ﻿namespace JourneyPlanner.Models;
 
-public record Journey(Connection[] Connections, int Duration);
+public record Journey(Edge[] Edges, int Duration);

@@ -16,7 +16,8 @@ public static class JourneySearcher
 
     private static Station[] FindStations(Station[] networkStations, string name)
     {
-        return networkStations.Where(station => station.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase))
+        return networkStations
+            .Where(station => station.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase))
             .ToArray();
     }
 }

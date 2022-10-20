@@ -15,11 +15,11 @@ internal class Program
 
     private static void Print(Journey journey)
     {
-        Console.WriteLine($"{string.Join(',', journey.Connections.Select(PrintConnection))}, {journey.Duration}");
+        Console.WriteLine($"{string.Join(',', journey.Edges.Select(PrintEdge))}, {journey.Duration}");
 
-        static string PrintConnection(Connection s)
+        static string PrintEdge(Edge edge)
         {
-            return $"{s.Source.Name}-{s.Source.Line} -> {s.Destination.Name}-{s.Destination.Line}";
+            return $"{edge.Source.Name}-{edge.Source.Line} -> {edge.Destination.Name}-{edge.Destination.Line}";
         }
     }
 }

@@ -9,10 +9,10 @@ public static class QuickGraphSearch
     public static IEnumerable<Journey> FindJourneys(Station[] startStations, Station[] destinationStations,
         Network network)
     {
-        var graph = QuickGraphMapping.BuildGraph(network);
+        var graph = QuickGraphMapping.Map(network);
         RemoveTransferConnections(graph, startStations, destinationStations);
         var shortestPaths = SearchAllShortestPaths(graph, startStations, destinationStations);
-        return shortestPaths.Select(QuickGraphMapping.BuildRoute);
+        return shortestPaths.Select(QuickGraphMapping.Map);
     }
 
     private static void RemoveTransferConnections(

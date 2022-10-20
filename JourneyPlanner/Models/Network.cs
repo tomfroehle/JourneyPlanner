@@ -1,3 +1,3 @@
 ﻿namespace JourneyPlanner.Models;
 
-public record Network(Station[] Stations, Connection[] Connections);
+public record Network(Station[] Stations, Edge[] Edges);
