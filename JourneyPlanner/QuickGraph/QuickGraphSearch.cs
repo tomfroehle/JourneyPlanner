@@ -2,22 +2,23 @@
 using QuikGraph;
 using QuikGraph.Algorithms.ShortestPath;
 
-namespace JourneyPlanner.Graph;
+namespace JourneyPlanner.QuickGraph;
 
-public static class GraphSearch
+public static class QuickGraphSearch
 {
     public static IEnumerable<Journey> FindJourneys(Station[] startStations, Station[] destinationStations,
         Network network)
     {
-        var graph = GraphMapping.BuildGraph(network);
-        var startVertices = startStations.Select(GraphMapping.BuildVertex).ToList();
-        var destinationVertices = destinationStations.Select(GraphMapping.BuildVertex).ToList();
+        var graph = QuickGraphMapping.BuildGraph(network);
+        var startVertices = startStations.Select(QuickGraphMapping.BuildVertex).ToList();
+        var destinationVertices = destinationStations.Select(QuickGraphMapping.BuildVertex).ToList();
         RemoveTransferConnections(graph, startVertices, destinationVertices);
-        return SearchAllShortestPaths(graph, startVertices, destinationVertices).Select(GraphMapping.BuildRoute);
+        var shortestPaths = SearchAllShortestPaths(graph, startVertices, destinationVertices);
+        return shortestPaths.Select(QuickGraphMapping.BuildRoute);
     }
 
     private static void RemoveTransferConnections(
-        IMutableEdgeListGraph<string, Edge> graph,
+        IMutableEdgeListGraph<string, QuickGraphEdge> graph,
         IEnumerable<string> startVertices,
         IEnumerable<string> destinationVertices)
     {
@@ -32,12 +33,12 @@ public static class GraphSearch
         }
     }
 
-    private static IEnumerable<IEnumerable<Edge>> SearchAllShortestPaths(
-        IVertexAndEdgeListGraph<string, Edge> graph,
+    private static IEnumerable<IEnumerable<QuickGraphEdge>> SearchAllShortestPaths(
+        IVertexAndEdgeListGraph<string, QuickGraphEdge> graph,
         IReadOnlyList<string> startVertices,
         IReadOnlyList<string> destinationVertices)
     {
-        var graphAlgorithm = new FloydWarshallAllShortestPathAlgorithm<string, Edge>(graph, e => e.Cost);
+        var graphAlgorithm = new FloydWarshallAllShortestPathAlgorithm<string, QuickGraphEdge>(graph, e => e.Cost);
         graphAlgorithm.Compute();
         foreach (var startVertex in startVertices)
         {

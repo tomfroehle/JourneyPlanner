@@ -1,13 +1,13 @@
 ﻿using JourneyPlanner.Models;
 using QuikGraph;
 
-namespace JourneyPlanner.Graph;
+namespace JourneyPlanner.QuickGraph;
 
-public static class GraphMapping
+public static class QuickGraphMapping
 {
-    public static AdjacencyGraph<string, Edge> BuildGraph(Network network)
+    public static AdjacencyGraph<string, QuickGraphEdge> BuildGraph(Network network)
     {
-        var graph = new AdjacencyGraph<string, Edge>();
+        var graph = new AdjacencyGraph<string, QuickGraphEdge>();
         var vertices = network.Stations.Select(BuildVertex);
         var edges = network.Connections.Select(BuildEdge);
         graph.AddVertexRange(vertices);
@@ -20,20 +20,22 @@ public static class GraphMapping
         return $"{station.Name}-{station.Line}";
     }
 
-    public static Journey BuildRoute(IEnumerable<Edge> path)
+    public static Journey BuildRoute(IEnumerable<QuickGraphEdge> path)
     {
         var edges = path.ToList();
         return new Journey(edges.Select(BuildConnection).ToArray(), edges.Sum(e => e.Cost));
     }
 
-    private static Connection BuildConnection(Edge edge)
+    private static Connection BuildConnection(QuickGraphEdge quickGraphEdge)
     {
-        return new Connection(BuildStation(edge.Source), BuildStation(edge.Target), edge.Cost);
+        return new Connection(BuildStation(quickGraphEdge.Source), BuildStation(quickGraphEdge.Target),
+            quickGraphEdge.Cost);
     }
 
-    private static Edge BuildEdge(Connection connection)
+    private static QuickGraphEdge BuildEdge(Connection connection)
     {
-        return new Edge(BuildVertex(connection.Source), BuildVertex(connection.Destination), connection.Duration);
+        return new QuickGraphEdge(BuildVertex(connection.Source), BuildVertex(connection.Destination),
+            connection.Duration);
     }
 
     private static Station BuildStation(string edgeSource)

@@ -1,5 +1,5 @@
-﻿using JourneyPlanner.Graph;
-using JourneyPlanner.Models;
+﻿using JourneyPlanner.Models;
+using JourneyPlanner.QuickGraph;
 
 namespace JourneyPlanner;
 
@@ -10,7 +10,7 @@ public static class JourneySearcher
         var network = NetworkBuilder.Build();
         var startStations = FindStations(network.Stations, start);
         var destinationStations = FindStations(network.Stations, destination);
-        var journeys = GraphSearch.FindJourneys(startStations, destinationStations, network);
+        var journeys = QuickGraphSearch.FindJourneys(startStations, destinationStations, network);
         return journeys.OrderBy(j => j.Duration);
     }
 
